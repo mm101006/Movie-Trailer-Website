@@ -1,0 +1,638 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Entertainment</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet"
+    href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+    href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src=
+    "http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src=
+    "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <link href=
+    "https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+    <link href=
+    "https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
+    <style type="text/css" media="screen">
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            padding-top: 80px;
+            background-color: #F0FFFF;
+            color: #000000;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        #dropdown1{
+            display: inline-block;
+        }
+        #dropdown2{
+            display: inline-block;
+        }
+        #rating{
+            color: #8B0000;
+            font-family: 'Special Elite', cursive;
+        }
+        #MovieDB{
+            height: 50px;
+        }
+        h2, .h2{
+            font-size: 20px;
+        }
+        .col-md-6, col-lg-4{
+            width: 380px;
+            height: 463px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #6495ED;
+            cursor: pointer;
+        }
+        .navbar-inverse {
+            background-image:
+              linear-gradient(to bottom,#417ff0 0,#cfdef3  100%);
+        }
+        .navbar-inverse .navbar-brand {
+            color: #191970;
+            font-size: 36px;
+            font-family: 'Frijole', cursive;
+        }
+        .navbar {
+            border: none;
+        }
+        .navbar-inverse .navbar-brand:hover,
+        .navbar-inverse .navbar-brand:focus {
+            color: black;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close,         .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself
+            // gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId =             $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/'             + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().             append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal"           aria-hidden="true">
+            <img src=             "https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+            <img id="MovieDB" src=             "https://www.themoviedb.org/assets/static_cache/41bdcf10bbf6f84c0fc73f27b2180b95/images/v4/logos/91x81.png"
+            alt="MovieDB"><a class="navbar-brand">Latest Movies</a>
+          </div>
+      </nav>
+      </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="5lGoQhFb4NM"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//imekS7f1OuHyUP2LAiTEM0zBzUz.jpg" width="220" height="342">
+    <h2 class="header">Wonder Woman <span id="rating">PG-13<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 141</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>An Amazon princess comes to the world of Man to become the greatest of the female superheroes.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="sKyLJI91EM0"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//f8Ng1Sgb3VLiSwAvrfKeQPzvlfr.jpg" width="220" height="342">
+    <h2 class="header">Transformers: The Last Knight <span id="rating">PG-13<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 149</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Autobots and Decepticons are at war, with humans on the sidelines. Optimus Prime is gone. The key to saving our future lies buried in the secrets of the past, in the hidden history of Transformers on Earth.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="IjHgzkQM2Sg"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//zxkY8byBnCsXodEYpK8tmwEGXBI.jpg" width="220" height="342">
+    <h2 class="header">The Mummy <span id="rating">PG-13<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 110</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Though safely entombed in a crypt deep beneath the unforgiving desert, an ancient queen whose destiny was unjustly taken from her is awakened in our current day, bringing with her malevolence grown over millennia, and terrors that defy human comprehension.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="RllJtOw0USI"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//5vHssUeVe25bMrof1HyaPyWgaP.jpg" width="220" height="342">
+    <h2 class="header">John Wick <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 101</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="H0VW6sg50Pk"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//ewVHnq4lUiovxBCu64qxq5bT2lu.jpg" width="220" height="342">
+    <h2 class="header">Alien: Covenant <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 122</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Bound for a remote planet on the far side of the galaxy, the crew of the colony ship Covenant discovers what they think is an uncharted paradise, but is actually a dark, dangerous world — whose sole inhabitant is the “synthetic” David, survivor of the doomed Prometheus expedition.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="6DBi41reeF0"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//5qcUGqWoWhEsoQwNUrtf3y3fcWn.jpg" width="220" height="342">
+    <h2 class="header">Despicable Me 3 <span id="rating">PG<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 96</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Gru and his wife Lucy must stop former '80s child star Balthazar Bratt from achieving world domination.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="lCkVr1n1eCA"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//hZrkA4aFcCCzatBJ2kqrLaCHd5t.jpg" width="220" height="342">
+    <h2 class="header">Spider-Man: Homecoming <span id="rating">PG-13<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 133</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="z2z857RSfhk"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//mBkOBaxjr7IBHGuQS3sSFeyYTM.jpg" width="220" height="342">
+    <h2 class="header">Baby Driver <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 113</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>After being coerced into working for a crime boss, a young getaway driver finds himself taking part in a heist doomed to fail.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="LZrX9mffH8Y"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//zkXnKIwX5pYorKJp2fjFSfNyKT0.jpg" width="220" height="342">
+    <h2 class="header">John Wick: Chapter 2 <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 122</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>John Wick is forced out of retirement by a former associate looking to seize control of a shadowy international assassins’ guild. Bound by a blood oath to aid him, Wick travels to Rome and does battle against some of the world’s most dangerous killers.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="Bp5q1sejIX0"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//6HE4xd8zloDqmjMZuhUCCw2UcY1.jpg" width="220" height="342">
+    <h2 class="header">Baywatch <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 116</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Devoted lifeguard Mitch Buchannon butts heads with a brash new recruit. Together, they uncover a local criminal plot that threatens the future of the Bay.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="UEP1Mk6Un98"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//y52mjaCLoJJzxfcDDlksKDngiDx.jpg" width="220" height="342">
+    <h2 class="header">War for the Planet of the Apes <span id="rating">NR<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 142</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Caesar and his apes are forced into a deadly conflict with an army of humans led by a ruthless Colonel. After the apes suffer unimaginable losses, Caesar wrestles with his darker instincts and begins his own mythic quest to avenge his kind. As the journey finally brings them face to face, Caesar and the Colonel are pitted against each other in an epic battle that will determine the fate of both their species and the future of the planet.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="U1eQYk74R1g"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//fyy1nDC8wm553FCiBDojkJmKLCs.jpg" width="220" height="342">
+    <h2 class="header">Cars 3 <span id="rating">G<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 109</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Blindsided by a new generation of blazing-fast racers, the legendary Lightning McQueen is suddenly pushed out of the sport he loves. To get back in the game, he will need the help of an eager young race technician with her own plan to win, inspiration from the late Fabulous Hudson Hornet, and a few unexpected turns. Proving that #95 isn't through yet will test the heart of a champion on Piston Cup Racing’s biggest stage!</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="Af2N3N5rURI"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//sDlafquO1IvypRLbNdcC4b3oSoa.jpg" width="220" height="342">
+    <h2 class="header">2:22 <span id="rating">NR<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 99</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>A man's life is derailed when an ominous pattern of events repeats itself in exactly the same manner every day, ending at precisely 2:22 p.m.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="DdmFD81pBWw"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//5rr7tQfzS0ARqEea3W9SNSFGRzb.jpg" width="220" height="342">
+    <h2 class="header">Once Upon a Time in Venice <span id="rating">NR<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 94</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>A Los Angeles detective seeks out the ruthless gang that stole his dog.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="Uw2Styd2RAU"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//88qfHWhlOBYXp69277QFhdPYnWf.jpg" width="220" height="342">
+    <h2 class="header">Resident Evil: Vendetta <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 97</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>BSAA Chris Redfield enlists the help of government agent Leon S. Kennedy and Professor Rebecca Chambers from Alexander Institute of Biotechnology to stop a death merchant with a vengeance from spreading a deadly virus in New York.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="pfhJE1ORqas"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//zmgsaKFWbmZ1Grz4SO0PLNxilv3.jpg" width="220" height="342">
+    <h2 class="header">All Eyez on Me <span id="rating">R<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 139</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>All Eyez on Me chronicles the life and legacy of Tupac Shakur, including his rise to superstardom as a hip-hop artist, actor, poet and activist, as well as his imprisonment and prolific, controversial time at Death Row Records. Against insurmountable odds, Tupac rose to become a cultural icon whose career and persona both continue to grow long after his passing.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="LBmBcASLdK8"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//A9mUCcgPziYqK1JlckhEWvZ2z8y.jpg" width="220" height="342">
+    <h2 class="header">47 Meters Down <span id="rating">NR<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 89</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Two sisters on Mexican vacation are trapped in a shark observation cage at the bottom of the ocean, with oxygen running low and great whites circling nearby, they have less than an hour of air left to figure out how to get to the surface.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="QUlr8Am4zQ0"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//bQVqd5rWrx5GbXhJNuvKy4Viz6j.jpg" width="220" height="342">
+    <h2 class="header">The Circle <span id="rating">NR<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 110</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>A young tech worker takes a job at a powerful Internet corporation, quickly rises up the company's ranks, and soon finds herself in a perilous situation concerning privacy, surveillance and freedom. She comes to learn that her decisions and actions will determine the future of humanity.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="2PR9MOPTI7g"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//uM1dNEmcAeyDGjMcFLlkKOyBgft.jpg" width="220" height="342">
+    <h2 class="header">Nerve <span id="rating">PG-13<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 96</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Industrious high school senior, Vee Delmonico, has had it with living life on the sidelines. When pressured by friends to join the popular online game Nerve, Vee decides to sign up for just one dare in what seems like harmless fun. But as she finds herself caught up in the thrill of the adrenaline-fueled competition partnered with a mysterious stranger, the game begins to take a sinister turn with increasingly dangerous acts, leading her into a high stakes finale that will determine her entire future.</li>
+      </ul>
+    </div>
+</div>
+
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"   data-trailer-youtube-id="T4yOIInh3QE"   data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/original//5TVBtMhwOldZW82g1Ka11IE86wC.jpg" width="220" height="342">
+    <h2 class="header">The Zookeeper's Wife <span id="rating">PG-13<span></h2>
+    <div id="dropdown1">
+      <button class="btn-group dropdown" type="button"       id="dropdownMenu2" data-toggle="dropdown"       aria-haspopup="true" aria-expanded="false">
+          Additional Info
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li>Total Duration: 126</li>
+      </ul>
+    </div>
+    <div id="dropdown2">
+      <button class="btn btn-default dropdown-toggle" type="button"         id="dropdownMenu1" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false">
+          Story Line
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>The account of keepers of the Warsaw Zoo, Jan and Antonina Zabinski, who helped save hundreds of people and animals during the Nazi invasion.</li>
+      </ul>
+    </div>
+</div>
+
+
+    </div>
+  </body>
+</html>
