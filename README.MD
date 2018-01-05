@@ -1,8 +1,9 @@
 # Project: Movie Trailer Website
 
-This project is for the Nanodegree Full Stack Development. For this project you are to write server-side code listing your favorite movies. The project requirements can be found at: 
-	[Requirements](https://review.udacity.com/#!/rubrics/2/view) 
+For this project I wrote code that uses an API from *themoviedb*. I used a get call to retreive the title, poster image, youtube trailer, as well as other information about each movie. I used two python classes to store information about each movie. When you open *fresh_tomatoes.html* file you will see a list of movies available in threater. 
 
+![Pic](LatestMoviesPic.png)
+	
 **Install Prerequisites**
 
 1. Python 2.7
